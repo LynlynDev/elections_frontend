@@ -30,7 +30,7 @@ export class RegionService {
       return this.client.delete<any>(`${this.CREATE_REGION}/${id}`);            
     }
 
-    updateRegion(id:number):Observable<region[]>{  //region de type region      
+    updateRegion(id:string):Observable<region[]>{  //region de type region      
       return this.client.get<any>(`${this.CREATE_REGION}/${id}`);            
     }
   

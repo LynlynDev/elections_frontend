@@ -18,7 +18,7 @@ export class RegionComponent implements OnInit{
   public formU!:FormGroup;
 
   error?:string
-  region: region = new region();
+  region: region = new region(); 
   formModal!:any
   success?:string
   regions?:any //c'est cette variable qui sera interpoler dans la bd pour afficher la liste des régions
@@ -45,7 +45,18 @@ export class RegionComponent implements OnInit{
   }
 
   updateModal(){
-    
+    this.region.label=this.formU.value.label;
+    this.service.updateRegion(this.regions).subscribe(
+      (data)=>{
+        this.success = "Opération réusiie"
+        this.listeRegion()
+        this.formModal.hide()
+      },
+      (error)=>{
+        this.error="Echec de l'opréation"
+        this.listeRegion()
+        this.formModal.hide() 
+      });
   }
   onRegisterRegion(){
     const r = new region
@@ -85,19 +96,19 @@ export class RegionComponent implements OnInit{
     )
   }
 
-  updateRegion(id:number){
-    this.service.updateRegion(id).subscribe(
-      (data)=>{
-        this.success="Opération réussie";
-        this.listeRegion();
-      },
-      (error)=>{
-        this.error="Echec de la modification";
-      }
-    )
+  // updateRegion(id:number){
+  //   this.service.updateRegion(id).subscribe(
+  //     (data)=>{
+  //       this.success="Opération réussie";
+  //       this.listeRegion();
+  //     },
+  //     (error)=>{
+  //       this.error="Echec de la modification";
+  //     }
+  //   )
 
     
   }
 
 
-}
+
