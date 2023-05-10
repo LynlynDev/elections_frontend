@@ -47,12 +47,12 @@ export class RegionComponent implements OnInit{
   updateModal(){
     this.region.label=this.formU.value.label;
     this.service.updateRegion(this.regions).subscribe(
-      (data)=>{
+      (_data)=>{
         this.success = "Opération réusiie"
         this.listeRegion()
         this.formModal.hide()
       },
-      (error)=>{
+      (_error)=>{
         this.error="Echec de l'opréation"
         this.listeRegion()
         this.formModal.hide() 
@@ -86,11 +86,11 @@ export class RegionComponent implements OnInit{
 
   deleteRegion(id:number){
     this.service.deleteRegion(id).subscribe(
-      (data)=>{
+      (_data)=>{
         this.success="Opération réussie";
         this.listeRegion();
       },
-      (error)=>{
+      (_error)=>{
         this.error="Echec de la suppression";
       }
     )
